@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>eae15859-0f36-4bf0-a92c-bb492107036d</ProjectGuid>
+    <RootNamespace>Keysight_33600A</RootNamespace>
+    <AssemblyName>Keysight-33600A</AssemblyName>
+    <Name>Keysight-33600A-Verification</Name>
+    <InstrumentLine1>Keysight 33611A Verification</InstrumentLine1>
+    <InstrumentLine2>Keysight 33622A Verification</InstrumentLine2>
+    <PublishFileName>Keysight-33600A-Calibration</PublishFileName>
+    <PackageDate>2021-06-29</PackageDate>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.mc">
+      <MainProcedure>True</MainProcedure>
+    </Compile>
+    <Compile Include="Sub 1kHz Ref.mc" />
+    <Compile Include="Sub 5790 Measurement.mc" />
+    <Compile Include="Sub Check Reading 5790.mc" />
+    <Compile Include="Sub DCOFF.mc" />
+    <Compile Include="Sub FSMR Measurement.mc" />
+    <Compile Include="Sub Full Self Test.mc">
+      <MainProcedure>False</MainProcedure>
+    </Compile>
+    <Compile Include="Sub HZAC.mc" />
+    <Compile Include="Sub Preamble.mc">
+      <MainProcedure>False</MainProcedure>
+    </Compile>
+    <Compile Include="Sub Timebase Verification.mc" />
+    <Compile Include="Sub VFLAT.mc" />
+  </ItemGroup>
+</Project>
