@@ -11,6 +11,7 @@ CONFIGURATION:         Fluke 8508A
 =============================================================================
  STEP    FSC    RANGE NOMINAL        TOLERANCE     MOD1        MOD2  3  4 CON
   1.001  WAIT         [D200]
+  1.024  SCPI         *RST
   1.002  IF           @v_cal == 0
   1.003  OPBR         Do you want to Zero Fluke 8508 AC and DC Voltage?
   1.004  IF           MEM1 == 1

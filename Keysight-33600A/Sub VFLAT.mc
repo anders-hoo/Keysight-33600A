@@ -1,33 +1,34 @@
 ﻿Kallab                                                      MET/CAL Procedure
 =============================================================================
 INSTRUMENT:            Sub VFLAT
-DATE:                  2021-06-30 11:46:49
+DATE:                  2021-06-30 14:19:16
 AUTHOR:                Antti Harala
 REVISION:
 ADJUSTMENT THRESHOLD:  70%
 NUMBER OF TESTS:       45
-NUMBER OF LINES:       298
+NUMBER OF LINES:       307
 CONFIGURATION:         Fluke 5790A
 CONFIGURATION:         FSMR26-N
 =============================================================================
  STEP    FSC    RANGE NOMINAL        TOLERANCE     MOD1        MOD2  3  4 CON
   1.001  WAIT         [D200]
-  1.002  IF           @source == 1
+  1.002  SCPI         *RST
   1.003  SCPI         [@5790][T20000]*RST;INPUT WBND; EXTRIG 1
-  1.004  ENDIF
-  1.005  DISP         Connect UUT OUTPUT to 5790B WIDEBAND INPUT.
 
-  1.027  IF           @channels == 2
-  1.028  SCPI         DISPlay:FOCus CH[V @source]
-  1.029  ENDIF
+  1.004  IF           @channels == 2
+  1.005  SCPI         DISPlay:FOCus CH[V @source]
+  1.006  DISP         Connect UUT CHANNEL [V @source] to 5790B WIDEBAND INPUT.
+  1.007  ELSE
+  1.008  DISP         Connect UUT OUTPUT to 5790B WIDEBAND INPUT.
+  1.009  ENDIF
 
-  1.006  MATH         @v_ampl = 0.354
-  1.007  CALL         Sub 5790 Ref
+  1.010  MATH         @v_ampl = 0.354
+  1.011  CALL         Sub 5790 Ref
 
-  1.008  TARGET       -p
-  1.009  MATH         @freq = 100e3
-  1.010  CALL         Sub 5790 Measurement
-  1.011  MEMC         0.00dB         0.10U
+  1.012  TARGET       -p
+  1.013  MATH         @freq = 100e3
+  1.014  CALL         Sub 5790 Measurement
+  1.015  MEMC         0.00dB         0.10U
 
   2.001  TARGET       -p
   2.002  MATH         @freq = 500e3
@@ -135,8 +136,8 @@ CONFIGURATION:         FSMR26-N
  21.003  CALL         Sub 5790 Measurement
  21.004  MEMC         0.00dB         0.25U
 
- 22.001  IF           @source == 1 || @fsmr_cal == 0
- 22.002  SCPI         [@FSMR]*RST
+ 22.001  SCPI         [@FSMR]*RST
+ 22.002  IF           @source == 1 || @fsmr_cal == 0
  22.003  SCPI         [@FSMR]ROSC:SOUR INT
  22.004  SCPI         [@FSMR]SYSTem:DISPlay:UPDate ON
  22.005  SCPI         [@FSMR]INIT:CONT ON
@@ -149,21 +150,25 @@ CONFIGURATION:         FSMR26-N
  22.008  SCPI         [@FSMR]SENS:PMET:STAT ON
  22.009  SCPI         [@FSMR]CAL:PMET:ZERO:AUTO ONCE;*WAI
  22.010  MATH         @fsmr_cal = 1
- 22.011  ENDIF
+ 22.011  ELSE
+ 22.012  SCPI         [@FSMR]INST:SEL MREC
+ 22.013  SCPI         [@FSMR]SENS:PMET:STAT ON
+ 22.014  SCPI         [@FSMR]INIT:CONT ON
+ 22.015  ENDIF
 
- 22.012  IF           @channels == 2
- 22.013  DISP         Connect the NRP-Z51 Power Sensor to UUT CHANNEL [V @source].
- 22.014  ELSE
- 22.015  DISP         Connect the NRP-Z51 Power Sensor to UUT OUTPUT.
- 22.016  ENDIF
+ 22.016  IF           @channels == 2
+ 22.017  DISP         Connect the NRP-Z51 Power Sensor to UUT CHANNEL [V @source].
+ 22.018  ELSE
+ 22.019  DISP         Connect the NRP-Z51 Power Sensor to UUT OUTPUT.
+ 22.020  ENDIF
 
- 22.017  MATH         @v_ampl = 0.354
- 22.018  CALL         Sub FSMR Ref
+ 22.021  MATH         @v_ampl = 0.354
+ 22.022  CALL         Sub FSMR Ref
 
- 22.019  TARGET       -p
- 22.020  MATH         @freq = 40e6
- 22.021  CALL         Sub FSMR Measurement
- 22.022  MEMC         0.00dB         0.20U
+ 22.023  TARGET       -p
+ 22.024  MATH         @freq = 40e6
+ 22.025  CALL         Sub FSMR Measurement
+ 22.026  MEMC         0.00dB         0.20U
 
  23.001  TARGET       -p
  23.002  MATH         @freq = 50e6

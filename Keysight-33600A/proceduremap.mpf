@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TagMap pxe="Keysight-33600A-Calibration.pxe">
+    <Tag name="Full Self Test" parent="">
+        <Description></Description>
+        <Procedure start="START_ST" end="END_ST">Keysight-33600A-Verification</Procedure>
+        <ExecutionTimeInMinutes>0</ExecutionTimeInMinutes>
+        <Notes></Notes>
+        <HasOperatorPrompts>False</HasOperatorPrompts>
+        <IsRequired>True</IsRequired>
+        <IsSelected>False</IsSelected>
+        <HasRun>False</HasRun>
+        <PartialCalInfoApplied>False</PartialCalInfoApplied>
+    </Tag>
+    <Tag name="Internal Timebase Verification" parent="">
+        <Description></Description>
+        <Procedure start="START_TB" end="END_TB">Keysight-33600A-Verification</Procedure>
+        <ExecutionTimeInMinutes>0</ExecutionTimeInMinutes>
+        <Notes></Notes>
+        <HasOperatorPrompts>False</HasOperatorPrompts>
+        <IsRequired>True</IsRequired>
+        <IsSelected>False</IsSelected>
+        <HasRun>False</HasRun>
+        <PartialCalInfoApplied>False</PartialCalInfoApplied>
+    </Tag>
+    <Tag name="AC High-Z Amplitude Verification" parent="">
+        <Description></Description>
+        <Procedure start="START_HZAC" end="END_HZAC">Keysight-33600A-Verification</Procedure>
+        <ExecutionTimeInMinutes>0</ExecutionTimeInMinutes>
+        <Notes></Notes>
+        <HasOperatorPrompts>False</HasOperatorPrompts>
+        <IsRequired>True</IsRequired>
+        <IsSelected>False</IsSelected>
+        <HasRun>False</HasRun>
+        <PartialCalInfoApplied>False</PartialCalInfoApplied>
+    </Tag>
+    <Tag name="DC Offset Voltage Verification" parent="">
+        <Description></Description>
+        <Procedure start="START_DCOFF" end="END_DCOFF">Keysight-33600A-Verification</Procedure>
+        <ExecutionTimeInMinutes>0</ExecutionTimeInMinutes>
+        <Notes></Notes>
+        <HasOperatorPrompts>False</HasOperatorPrompts>
+        <IsRequired>True</IsRequired>
+        <IsSelected>False</IsSelected>
+        <HasRun>False</HasRun>
+        <PartialCalInfoApplied>False</PartialCalInfoApplied>
+    </Tag>
+    <Tag name="Output Flatness Verification" parent="">
+        <Description></Description>
+        <Procedure start="START_VFLAT" end="END_VFLAT">Keysight-33600A-Verification</Procedure>
+        <ExecutionTimeInMinutes>0</ExecutionTimeInMinutes>
+        <Notes></Notes>
+        <HasOperatorPrompts>False</HasOperatorPrompts>
+        <IsRequired>True</IsRequired>
+        <IsSelected>False</IsSelected>
+        <HasRun>False</HasRun>
+        <PartialCalInfoApplied>False</PartialCalInfoApplied>
+    </Tag>
+</TagMap>

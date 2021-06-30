@@ -22,7 +22,7 @@ CONFIGURATION:         FSMR26-N
   1.005  SCPI         OUTP[V @source]:LOAD 50
   1.006  SCPI         SOURCE[V @source]:VOLT:UNIT VRMS
   1.007  SCPI         [@5790][T60000]RANGE [V @v_ampl];HIRES 0 ; DFILT OFF ; INPUT WBND; EXTRIG 0; REFCLR
-  1.008  SCPI         SOURCE[V @source]:APPLy:SIN 1e3,[V @v_ampl],0
+  1.008  SCPI         SOURCE[V @source]:APPLy:SIN 1e3,[V @v_ampl] VRMS,0
   1.009  CALL         Sub Check Reading 5790
   1.010  SCPI         [@5790][T60000]HIRES 1 ; DFILT MEDIUM,MEDIUM ;EXTRIG 1
   1.011  SCPI         [@5790][T60000]TRIG;*WAI
@@ -34,7 +34,7 @@ CONFIGURATION:         FSMR26-N
   1.015  SCPI         OUTP[V @source]:LOAD 50
   1.016  SCPI         SOURCE[V @source]:VOLT:UNIT VRMS
   1.016  SCPI         [@FSMR]INIT:CONT ON
-  1.017  SCPI         SOURCE[V @source]:APPLy:SIN 1e3,[V @v_ampl],0[D5000]
+  1.017  SCPI         SOURCE[V @source]:APPLy:SIN 1e3,[V @v_ampl] VRMS,0[D5000]
   1.018  SCPI         [@FSMR]:CALC:PMET:REL:AUTO ONCE
   1.019  SCPI         OUTP[V @source] OFF
   1.020  END

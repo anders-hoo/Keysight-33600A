@@ -17,21 +17,42 @@
   <ItemGroup>
     <Compile Include="Main.mc">
       <MainProcedure>True</MainProcedure>
+      <SectionedProcedure>True</SectionedProcedure>
     </Compile>
-    <Compile Include="Sub 1kHz Ref.mc" />
-    <Compile Include="Sub 5790 Measurement.mc" />
-    <Compile Include="Sub Check Reading 5790.mc" />
-    <Compile Include="Sub DCOFF.mc" />
-    <Compile Include="Sub FSMR Measurement.mc" />
+    <Compile Include="Sub 1kHz Ref.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
+    <Compile Include="Sub 5790 Measurement.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
+    <Compile Include="Sub Check Reading 5790.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
+    <Compile Include="Sub DCOFF.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
+    <Compile Include="Sub FSMR Measurement.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
     <Compile Include="Sub Full Self Test.mc">
       <MainProcedure>False</MainProcedure>
+      <SectionedProcedure>False</SectionedProcedure>
     </Compile>
-    <Compile Include="Sub Get Channel Name.mc" />
-    <Compile Include="Sub HZAC.mc" />
+    <Compile Include="Sub Get Channel Name.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
+    <Compile Include="Sub HZAC.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
     <Compile Include="Sub Preamble.mc">
       <MainProcedure>False</MainProcedure>
+      <SectionedProcedure>False</SectionedProcedure>
     </Compile>
-    <Compile Include="Sub Timebase Verification.mc" />
-    <Compile Include="Sub VFLAT.mc" />
+    <Compile Include="Sub Timebase Verification.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
+    <Compile Include="Sub VFLAT.mc">
+      <SectionedProcedure>False</SectionedProcedure>
+    </Compile>
   </ItemGroup>
 </Project>

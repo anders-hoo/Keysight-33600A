@@ -13,7 +13,7 @@ CONFIGURATION:         FSMR26-N
   1.001  SCPI         OUTP[V @source]:LOAD 50
   1.002  SCPI         SOURCE[V @source]:VOLT:UNIT VRMS
   1.003  SCPI         [@FSMR]INIT:CONT ON
-  1.004  SCPI         SOURCE[V @source]:APPLy:SIN [V @freq],[V @v_ampl],0[D5000]
+  1.004  SCPI         SOURCE[V @source]:APPLy:SIN [V @freq],[V @v_ampl] VRMS,0[D5000]
   1.005  SCPI         [@FSMR]FETC:PMET?[I]
   1.006  MATH         f_text = ENGR_NSD(@freq,"Hz",1)
   1.007  TSET         TDESC = [V f_text] at [V @v_ampl] Vrms

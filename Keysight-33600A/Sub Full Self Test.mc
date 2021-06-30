@@ -10,6 +10,7 @@ NUMBER OF LINES:       17
 =============================================================================
  STEP    FSC    RANGE NOMINAL        TOLERANCE     MOD1        MOD2  3  4 CON
   1.001  WAIT         [D200]
+  1.024  SCPI         *RST
   1.003  SCPI         [T45000]*TST?[I]
   1.004  EVAL   -e MEM == 0 : Self Test
 

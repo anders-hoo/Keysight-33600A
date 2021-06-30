@@ -1,12 +1,12 @@
 Kallab                                                      MET/CAL Procedure
 =============================================================================
 INSTRUMENT:            Keysight 33600A Verification
-DATE:                  2021-06-30 11:55:14
+DATE:                  2021-06-30 13:23:33
 AUTHOR:                Antti Harala
 REVISION:              1.1
 ADJUSTMENT THRESHOLD:  70%
 NUMBER OF TESTS:       1
-NUMBER OF LINES:       175
+NUMBER OF LINES:       172
 =============================================================================
  STEP    FSC    RANGE NOMINAL        TOLERANCE     MOD1        MOD2  3  4 CON
 # Add description and notes here. For example describe or list standards,
@@ -57,119 +57,116 @@ NUMBER OF LINES:       175
 # Set 8508A connection flag
   1.024  MATH         @8508_conn = 0
 
-# Reset UUT
-  1.025  SCPI         *RST
-
 # Tag.Name = Full Self Test
 # Tag.Start = START_ST
 # Tag.End = END_ST
 
-  1.026  LABEL        START_ST
-  1.027  HEAD         Full Self Test
-  1.028  RSLT         =
-  1.029  RSLT         =Full Self Test
-  1.030  TARGET       -p
+  1.025  LABEL        START_ST
+  1.026  HEAD         Full Self Test
+  1.027  RSLT         =
+  1.028  RSLT         =Full Self Test
+  1.029  TARGET       -p
 
-  1.031  CALL         Sub Full Self Test
+  1.030  CALL         Sub Full Self Test
 
-  1.032  LABEL        END_ST
+  1.031  LABEL        END_ST
 
 # Tag.Name = Internal Timebase Verification
 # Tag.Start = START_TB
 # Tag.End = END_TB
 
-  1.033  LABEL        START_TB
-  1.034  MATH         @source = 1
-  1.035  HEAD         Internal Timebase Verification
-  1.036  RSLT         =
-  1.037  RSLT         =Internal Timebase Verification
-  1.038  TARGET       -p
+  1.032  LABEL        START_TB
+  1.033  MATH         @source = 1
+  1.034  HEAD         Internal Timebase Verification
+  1.035  RSLT         =
+  1.036  RSLT         =Internal Timebase Verification
+  1.037  TARGET       -p
 
-  1.039  CALL         Sub Timebase Verification
+  1.038  CALL         Sub Timebase Verification
 
-  1.040  LABEL        END_TB
+  1.039  LABEL        END_TB
 
 # Tag.Name = AC High-Z Amplitude Verification
 # Tag.Start = START_HZAC
 # Tag.End = END_HZAC
 
-  1.041  LABEL        START_HZAC
-  1.042  MATH         @source = 1
-  1.043  CALL         Sub Get Channel Name
-  1.044  HEAD         AC High-Z Amplitude Verification[V @current_channel_name]
-  1.045  RSLT         =
-  1.046  RSLT         =AC High-Z Amplitude Verification[V @current_channel_name]
-  1.047  TARGET       -p
+  1.040  LABEL        START_HZAC
+  1.041  MATH         @source = 1
+  1.042  CALL         Sub Get Channel Name
+  1.043  HEAD         AC High-Z Amplitude Verification[V @current_channel_name]
+  1.044  RSLT         =
+  1.045  RSLT         =AC High-Z Amplitude Verification[V @current_channel_name]
+  1.046  TARGET       -p
 
-  1.048  CALL         Sub HZAC
+  1.047  CALL         Sub HZAC
 
-  1.049  IF           @channels == 2
-  1.050  MATH         @source = 2
-  1.051  CALL         Sub Get Channel Name
-  1.052  HEAD         AC High-Z Amplitude Verification[V @current_channel_name]
-  1.053  RSLT         =
-  1.054  RSLT         =AC High-Z Amplitude Verification[V @current_channel_name]
-  1.055  TARGET       -p
+  1.048  IF           @channels == 2
+  1.049  MATH         @source = 2
+  1.050  CALL         Sub Get Channel Name
+  1.051  HEAD         AC High-Z Amplitude Verification[V @current_channel_name]
+  1.052  RSLT         =
+  1.053  RSLT         =AC High-Z Amplitude Verification[V @current_channel_name]
+  1.054  TARGET       -p
 
-  1.056  CALL         Sub HZAC
-  1.057  ENDIF
+  1.055  CALL         Sub HZAC
+  1.056  ENDIF
 
-  1.058  LABEL        END_HZAC
+  1.057  LABEL        END_HZAC
 
 # Tag.Name = DC Offset Voltage Verification
 # Tag.Start = START_DCOFF
 # Tag.End = END_DCOFF
 
-  1.059  LABEL        START_DCOFF
-  1.060  MATH         @source = 1
-  1.061  CALL         Sub Get Channel Name
-  1.062  HEAD         DC Offset Voltage Verification[V @current_channel_name]
-  1.063  RSLT         =
-  1.064  RSLT         =DC Offset Voltage Verification[V @current_channel_name]
-  1.065  TARGET       -p
+  1.058  LABEL        START_DCOFF
+  1.059  MATH         @source = 1
+  1.060  CALL         Sub Get Channel Name
+  1.061  HEAD         DC Offset Voltage Verification[V @current_channel_name]
+  1.062  RSLT         =
+  1.063  RSLT         =DC Offset Voltage Verification[V @current_channel_name]
+  1.064  TARGET       -p
 
-  1.066  CALL         Sub DCOFF
+  1.065  CALL         Sub DCOFF
 
-  1.067  IF           @channels == 2
-  1.068  MATH         @source = 2
-  1.069  CALL         Sub Get Channel Name
-  1.070  HEAD         DC Offset Voltage Verification[V @current_channel_name]
-  1.071  RSLT         =
-  1.072  RSLT         =DC Offset Voltage Verification[V @current_channel_name]
-  1.073  TARGET       -p
+  1.066  IF           @channels == 2
+  1.067  MATH         @source = 2
+  1.068  CALL         Sub Get Channel Name
+  1.069  HEAD         DC Offset Voltage Verification[V @current_channel_name]
+  1.070  RSLT         =
+  1.071  RSLT         =DC Offset Voltage Verification[V @current_channel_name]
+  1.072  TARGET       -p
 
-  1.074  CALL         Sub DCOFF
-  1.075  ENDIF
+  1.073  CALL         Sub DCOFF
+  1.074  ENDIF
 
-  1.076  MATH         @8508_conn = 0
+  1.075  MATH         @8508_conn = 0
 
-  1.077  LABEL        END_DCOFF
+  1.076  LABEL        END_DCOFF
 
 # Tag.Name = Output Flatness Verification
 # Tag.Start = START_VFLAT
 # Tag.End = END_VFLAT
 
-  1.078  LABEL        START_VFLAT
-  1.079  MATH         @source = 1
-  1.080  CALL         Sub Get Channel Name
-  1.081  HEAD         Output Flatness Verification[V @current_channel_name]
-  1.082  RSLT         =
-  1.083  RSLT         =Output Flatness Verification[V @current_channel_name]
-  1.084  TARGET       -p
+  1.077  LABEL        START_VFLAT
+  1.078  MATH         @source = 1
+  1.079  CALL         Sub Get Channel Name
+  1.080  HEAD         Output Flatness Verification[V @current_channel_name]
+  1.081  RSLT         =
+  1.082  RSLT         =Output Flatness Verification[V @current_channel_name]
+  1.083  TARGET       -p
 
-  1.085  CALL         Sub VFLAT
+  1.084  CALL         Sub VFLAT
 
-  1.086  IF           @channels == 2
-  1.087  MATH         @source = 2
-  1.088  CALL         Sub Get Channel Name
-  1.089  HEAD         Output Flatness Verification[V @current_channel_name]
-  1.090  RSLT         =
-  1.091  RSLT         =Output Flatness Verification[V @current_channel_name]
-  1.092  TARGET       -p
+  1.085  IF           @channels == 2
+  1.086  MATH         @source = 2
+  1.087  CALL         Sub Get Channel Name
+  1.088  HEAD         Output Flatness Verification[V @current_channel_name]
+  1.089  RSLT         =
+  1.090  RSLT         =Output Flatness Verification[V @current_channel_name]
+  1.091  TARGET       -p
 
-  1.093  CALL         Sub VFLAT
-  1.094  ENDIF
+  1.092  CALL         Sub VFLAT
+  1.093  ENDIF
 
-  1.095  LABEL        END_VFLAT
+  1.094  LABEL        END_VFLAT
 
-  1.096  END
+  1.095  END
