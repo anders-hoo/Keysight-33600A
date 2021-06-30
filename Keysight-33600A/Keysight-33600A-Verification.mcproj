@@ -9,7 +9,7 @@
     <InstrumentLine1>Keysight 33611A Verification</InstrumentLine1>
     <InstrumentLine2>Keysight 33622A Verification</InstrumentLine2>
     <PublishFileName>Keysight-33600A-Calibration</PublishFileName>
-    <PackageDate>2021-06-29</PackageDate>
+    <PackageDate>2021-06-30</PackageDate>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
   </PropertyGroup>

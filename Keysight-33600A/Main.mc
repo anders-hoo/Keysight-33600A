@@ -2,7 +2,7 @@ Kallab                                                      MET/CAL Procedure
 =============================================================================
 INSTRUMENT:            Keysight 33611A Verification
 INSTRUMENT:            Keysight 33622A Verification
-DATE:                  2021-06-29 14:40:51
+DATE:                  2021-06-30 08:45:08
 AUTHOR:                Antti Harala
 REVISION:              1.1
 ADJUSTMENT THRESHOLD:  70%
@@ -38,9 +38,9 @@ NUMBER OF LINES:       125
 # First connection messages.
   1.007  DISP         Connect UUT to GPIB bus 1.
 
+# Check BW options from UUT
   1.008  SCPI         SYSTem:LICense:CATalog?[I$]
-  1.009  MATH         MEM = FIND(MEM2, "BW120", 0)
-  1.010  IF           MEM >= 1
+  1.010  IF           FIND(MEM2, "BW120", 0) >= 1
   1.011  MATH         @BW120 = 1
   1.012  ELSE
   1.013  MATH         @BW120 = 0

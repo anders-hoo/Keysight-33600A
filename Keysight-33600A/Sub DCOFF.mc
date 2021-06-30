@@ -17,7 +17,7 @@ CONFIGURATION:         Fluke 8508A
   1.004  OPBR         Do you want to Zero Fluke 8508 AC and DC Voltage?
   1.005  IF           MEM1 == 1
   1.006  SCPI         [@8508]DCV AUTO, FILT_OFF, RESL7, FAST_ON, TWO_WR;GUARD INT
-  1.007  DISP         Connect Fluke 4W short to UUT.
+  1.007  DISP         Connect Fluke 4W short to 8508A.
   1.008  WAIT         -a -t 15 DCV Zero: Please wait for emf dissapation.
   1.009  SCPI         [@8508][T120000]MZERO?
   1.010  SCPI         [@8508]ACV AUTO, RESL6, FILT40HZ, TFER_ON, TWO_WR;GUARD INT
