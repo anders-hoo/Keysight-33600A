@@ -10,10 +10,10 @@ NUMBER OF LINES:       22
 CONFIGURATION:         Fluke 5790A
 =============================================================================
  STEP    FSC    RANGE NOMINAL        TOLERANCE     MOD1        MOD2  3  4 CON
-  1.001  SCPI         OUTP:LOAD 50
-  1.002  SCPI         VOLT:UNIT VRMS
+  1.001  SCPI         OUTP[V @source]:LOAD 50
+  1.002  SCPI         SOURCE[V @source]:VOLT:UNIT VRMS
   1.003  SCPI         [@5790][T60000]RANGE [V @v_ampl];HIRES 0 ; DFILT OFF ; INPUT WBND; EXTRIG 0
-  1.004  SCPI         APPLy:SIN [V @freq],[V @v_ampl],0
+  1.004  SCPI         SOURCE[V @source]:APPLy:SIN [V @freq],[V @v_ampl],0
   1.005  CALL         Sub Check Reading 5790
   1.006  SCPI         [@5790][T60000]HIRES 1 ; DFILT MEDIUM,MEDIUM ; EXTRIG 1
   1.007  SCPI         [@5790][T60000]TRIG;*WAI

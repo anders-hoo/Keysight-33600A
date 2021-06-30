@@ -1,29 +1,33 @@
 ﻿Kallab                                                      MET/CAL Procedure
 =============================================================================
 INSTRUMENT:            Sub VFLAT
-DATE:                  2021-06-30 08:40:19
+DATE:                  2021-06-30 11:46:49
 AUTHOR:                Antti Harala
 REVISION:
 ADJUSTMENT THRESHOLD:  70%
 NUMBER OF TESTS:       45
-NUMBER OF LINES:       291
+NUMBER OF LINES:       298
 CONFIGURATION:         Fluke 5790A
 CONFIGURATION:         FSMR26-N
 =============================================================================
  STEP    FSC    RANGE NOMINAL        TOLERANCE     MOD1        MOD2  3  4 CON
   1.001  WAIT         [D200]
-  1.002  SCPI         [T20000]*RST[D200]
+  1.002  IF           @source == 1
   1.003  SCPI         [@5790][T20000]*RST;INPUT WBND; EXTRIG 1
+  1.004  ENDIF
+  1.005  DISP         Connect UUT OUTPUT to 5790B WIDEBAND INPUT.
 
-  1.004  DISP         Connect UUT OUTPUT to 5790B WIDEBAND INPUT.
+  1.027  IF           @channels == 2
+  1.028  SCPI         DISPlay:FOCus CH[V @source]
+  1.029  ENDIF
 
-  1.005  MATH         @v_ampl = 0.354
-  1.006  CALL         Sub 5790 Ref
+  1.006  MATH         @v_ampl = 0.354
+  1.007  CALL         Sub 5790 Ref
 
-  1.007  TARGET       -p
-  1.008  MATH         @freq = 100e3
-  1.009  CALL         Sub 5790 Measurement
-  1.010  MEMC         0.00dB         0.10U
+  1.008  TARGET       -p
+  1.009  MATH         @freq = 100e3
+  1.010  CALL         Sub 5790 Measurement
+  1.011  MEMC         0.00dB         0.10U
 
   2.001  TARGET       -p
   2.002  MATH         @freq = 500e3
@@ -131,28 +135,35 @@ CONFIGURATION:         FSMR26-N
  21.003  CALL         Sub 5790 Measurement
  21.004  MEMC         0.00dB         0.25U
 
- 22.004  SCPI         [@FSMR]*RST
- 22.005  SCPI         [@FSMR]ROSC:SOUR INT
- 22.006  SCPI         [@FSMR]SYSTem:DISPlay:UPDate ON
- 22.007  SCPI         [@FSMR]INIT:CONT ON
+ 22.001  IF           @source == 1 || @fsmr_cal == 0
+ 22.002  SCPI         [@FSMR]*RST
+ 22.003  SCPI         [@FSMR]ROSC:SOUR INT
+ 22.004  SCPI         [@FSMR]SYSTem:DISPlay:UPDate ON
+ 22.005  SCPI         [@FSMR]INIT:CONT ON
 
- 22.008  DISP         Connect NRP-Z51 Power Sensor to FSMR.
- 22.008  DISP         Leave the power sensor head unconnected
- 22.008  DISP         for power sensor zero.
+ 22.006  DISP         Connect NRP-Z51 Power Sensor to FSMR.
+ 22.006  DISP         Leave the power sensor head unconnected
+ 22.006  DISP         for power sensor zero.
 
- 22.009  SCPI         [@FSMR]INST:SEL MREC
- 22.010  SCPI         [@FSMR]SENS:PMET:STAT ON
- 22.011  SCPI         [@FSMR]CAL:PMET:ZERO:AUTO ONCE;*WAI
+ 22.007  SCPI         [@FSMR]INST:SEL MREC
+ 22.008  SCPI         [@FSMR]SENS:PMET:STAT ON
+ 22.009  SCPI         [@FSMR]CAL:PMET:ZERO:AUTO ONCE;*WAI
+ 22.010  MATH         @fsmr_cal = 1
+ 22.011  ENDIF
 
- 22.013  DISP         Connect the power sensor to UUT OUTPUT.
+ 22.012  IF           @channels == 2
+ 22.013  DISP         Connect the NRP-Z51 Power Sensor to UUT CHANNEL [V @source].
+ 22.014  ELSE
+ 22.015  DISP         Connect the NRP-Z51 Power Sensor to UUT OUTPUT.
+ 22.016  ENDIF
 
- 22.014  MATH         @v_ampl = 0.354
- 22.015  CALL         Sub FSMR Ref
+ 22.017  MATH         @v_ampl = 0.354
+ 22.018  CALL         Sub FSMR Ref
 
- 22.016  TARGET       -p
- 22.017  MATH         @freq = 40e6
- 22.018  CALL         Sub FSMR Measurement
- 22.019  MEMC         0.00dB         0.20U
+ 22.019  TARGET       -p
+ 22.020  MATH         @freq = 40e6
+ 22.021  CALL         Sub FSMR Measurement
+ 22.022  MEMC         0.00dB         0.20U
 
  23.001  TARGET       -p
  23.002  MATH         @freq = 50e6
@@ -250,17 +261,23 @@ CONFIGURATION:         FSMR26-N
 
  40.001  ENDIF
 
- 40.002  DISP         Add Model HP 8491B 10 dB (S/N 17871) Attenuator
- 40.002  DISP         to the power sensor head. Reconnect the power
- 40.002  DISP         sensor with the attenuator to UUT OUTPUT.
+ 40.002  IF           @channels == 2
+ 40.003  DISP         Add Model HP 8491B 10 dB (S/N 17871) Attenuator
+ 40.003  DISP         to the power sensor head. Reconnect the power
+ 40.003  DISP         sensor with the attenuator to UUT CHANNEL [V @source].
+ 40.004  ELSE
+ 40.005  DISP         Add Model HP 8491B 10 dB (S/N 17871) Attenuator
+ 40.005  DISP         to the power sensor head. Reconnect the power
+ 40.005  DISP         sensor with the attenuator to UUT OUTPUT.
+ 40.006  ENDIF
 
- 40.003  MATH         @v_ampl = 2.828
- 40.004  CALL         Sub FSMR Ref
+ 40.007  MATH         @v_ampl = 2.828
+ 40.008  CALL         Sub FSMR Ref
 
- 40.005  TARGET       -p
- 40.006  MATH         @freq = 40e6
- 40.007  CALL         Sub FSMR Measurement
- 40.008  MEMC         0.00dB         0.25U
+ 40.009  TARGET       -p
+ 40.010  MATH         @freq = 40e6
+ 40.011  CALL         Sub FSMR Measurement
+ 40.012  MEMC         0.00dB         0.25U
 
  41.001  TARGET       -p
  41.002  MATH         @freq = 50e6

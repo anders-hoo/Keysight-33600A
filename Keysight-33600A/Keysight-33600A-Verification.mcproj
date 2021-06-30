@@ -6,8 +6,9 @@
     <RootNamespace>Keysight_33600A</RootNamespace>
     <AssemblyName>Keysight-33600A</AssemblyName>
     <Name>Keysight-33600A-Verification</Name>
-    <InstrumentLine1>Keysight 33611A Verification</InstrumentLine1>
-    <InstrumentLine2>Keysight 33622A Verification</InstrumentLine2>
+    <InstrumentLine1>Keysight 33600A Verification</InstrumentLine1>
+    <InstrumentLine2>
+    </InstrumentLine2>
     <PublishFileName>Keysight-33600A-Calibration</PublishFileName>
     <PackageDate>2021-06-30</PackageDate>
   </PropertyGroup>
@@ -25,6 +26,7 @@
     <Compile Include="Sub Full Self Test.mc">
       <MainProcedure>False</MainProcedure>
     </Compile>
+    <Compile Include="Sub Get Channel Name.mc" />
     <Compile Include="Sub HZAC.mc" />
     <Compile Include="Sub Preamble.mc">
       <MainProcedure>False</MainProcedure>
